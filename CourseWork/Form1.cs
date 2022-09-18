@@ -32,8 +32,8 @@ namespace GSCEditor
                     if (Control.ModifierKeys == Keys.Alt)
                     {
                         int grad = 45;
-                        float rad = grad * 0.0174533f; // радиан поворта, 0.0174.. радиан одного градуса
-                        polygon.rotate(e.Delta / 120f * rad, polygon.getCenter());
+                        float rad = grad * 0.0174533f; // 0.0174.. радиан одного градуса
+                        polygon.rotate(e.Delta / 120f * rad, relatePoint);
                     }
                     else
                     {
@@ -82,15 +82,20 @@ namespace GSCEditor
                     inputPoints.Clear();
                 }
             }
-            else if (inputPoints.Count > 3)
+            else
             {
-                // создание сплайна
-                Primitive p = new Primitive(inputPoints, getColor());
-                p.setMode(2);
-                objects.Add(p);
-                render();
-                updateBoxes();
-                inputPoints.Clear();
+                if (e.Button == MouseButtons.Right && inputPoints.Count > 1) // Конец ввода
+                {
+                    // создание кривой
+                    Primitive p = new Primitive(inputPoints, getColor());
+                    p.setMode(2);
+                    objects.Add(p);
+                    render();
+                    updateBoxes();
+                    inputPoints.Clear();
+                }
+               
+               
             }
         }
 
@@ -106,7 +111,21 @@ namespace GSCEditor
                 }
                 i++;
             }
+            
             return -1;
+        }
+
+        //включает и отключает кнопки
+        private void updateButtonState() {
+           
+            if (selectedIndex != -1) {
+                button1.Enabled = true;
+                button4.Enabled = true;
+            }else{
+                button4.Enabled = false;
+                button1.Enabled = false;
+            }
+                
         }
 
         // Обработчик события нажатия кнопки мыши в поле вывода
@@ -129,13 +148,14 @@ namespace GSCEditor
                         g.DrawEllipse(new Pen(Color.Blue), e.X - 2, e.Y - 2, 5, 5);
                     }
                     else selectedIndex = -1;
+                    
                     break;
                 case 3:
                     //добавление заранее заданных примитивов
                     addPrimitive(e.X, e.Y);
                     break;
             }
-
+            updateButtonState();
             pictureBox1.Image = myBitmap;
         }
 
@@ -215,18 +235,11 @@ namespace GSCEditor
             {
                 if (inputPoints.Count == 1)
                     g.DrawRectangle(pen, inputPoints[0].X, inputPoints[0].Y, 1, 1);
-                if (getMode() != 2)
-                    for (int i = 1; i < inputPoints.Count; i++)
-                    {
-                        g.DrawLine(pen, inputPoints[i - 1], inputPoints[i]);
-                    }
-                else
+                for (int i = 1; i < inputPoints.Count; i++)
                 {
-                    if (inputPoints.Count > 1)
-                        g.DrawLine(arrowPen, inputPoints[0], inputPoints[1]);
-                    if (inputPoints.Count == 3)
-                        g.DrawRectangle(pen, inputPoints[2].X, inputPoints[2].Y, 1, 1);
+                    g.DrawLine(pen, inputPoints[i - 1], inputPoints[i]);
                 }
+               
             }
 
 
@@ -320,7 +333,7 @@ namespace GSCEditor
             {
                 selectedIndex = -1;
 
-                objects.Add(new Couple(first, second, type));
+                objects.Add(new Pair(first, second, type));
                 objects.Remove(first);
                 objects.Remove(second);
 
@@ -389,12 +402,13 @@ namespace GSCEditor
 
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (getMode() == 1)
-                button1.Enabled = true;
-            else
-                button1.Enabled = false;
+            
 
         }
 
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -5,14 +5,14 @@ using System.Text;
 
 namespace GSCEditor
 {
-    class Couple : UniversalObject
+    class Pair : UniversalObject
     {
         Primitive first;
         Primitive second;
 
         int typeOperation;
 
-        public Couple(Primitive first, Primitive second, int type) {
+        public Pair(Primitive first, Primitive second, int type) {
             this.first = first;
             this.second = second;
             typeOperation = type;
@@ -77,7 +77,7 @@ namespace GSCEditor
             {
                 case 1: setQ = new int[] { 1, 2 }; break; // симметрическая разность        
                 default:
-                   setQ = new int[] { 2, 2 }; break; // разность   
+                   setQ = new int[] { 1, 3 }; break; // объединение   
             }
 
             List<float> left = new List<float>();
@@ -101,10 +101,10 @@ namespace GSCEditor
             return new Sides(left, right);
         }
 
+        //сортирует список
         private void sortM(List<float[]> M)
         {
             int len = M.Count;
-            // пузырьковая
             for (int i = 0; i < len; i++)
             {
                 for (int j = 0; j < len - 1; j++)

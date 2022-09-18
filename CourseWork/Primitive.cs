@@ -221,11 +221,11 @@ namespace GSCEditor
 
             }
 
-            Sides borders = getActualSides(y);
+            Sides sides = getActualSides(y);
 
-            for (int i = 0; i < borders.getLeft().Count; i++)
+            for (int i = 0; i < sides.getLeft().Count; i++)
             {
-                if (borders.getLeft()[i] <= x && borders.getRight()[i] >= x)
+                if (isBetween(x, sides.getLeft()[i], sides.getRight()[i], 0.1f))
                     return true;
             }
             return false;
@@ -234,6 +234,12 @@ namespace GSCEditor
         //проверка, внутри ли значение заданного интервала, с погрешностью е
         private bool isBetween(float value, float fborder, float sborder, float e)
         {
+            if (fborder > sborder) {
+                float b = fborder;
+                fborder = sborder;
+                sborder = b;
+            }
+
             return (value > fborder - e) && (value < sborder + e);
         }
 
@@ -287,7 +293,7 @@ namespace GSCEditor
         public void mirror(PointF origin)
         {
             move(-origin.X, -origin.Y);
-            applyMatrix(new float[,] { { -1, 0, 0},
+            applyMatrix(new float[,] { { 1, 0, 0},
                                         { 0, -1, 0},
                                         { 0, 0, 1} });
             move(origin.X, origin.Y);
