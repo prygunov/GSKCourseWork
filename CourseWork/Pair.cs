@@ -30,10 +30,10 @@ namespace GSCEditor
 
             for (int Y = minY + 1; Y < maxY; Y++)
             {
-                Sides borders = getActualSides(Y);
+                Sides sides = getActualSides(Y);
 
-                List<float> Xrl = borders.getLeft();
-                List<float> Xrr = borders.getRight();
+                List<float> Xrl = sides.getLeft();
+                List<float> Xrr = sides.getRight();
 
                 // отрисовка
                 for (int i = 0; i < Xrr.Count; i++)
@@ -46,13 +46,13 @@ namespace GSCEditor
 
         public Sides getActualSides(int Y)
         {
-            Sides firstBorders = first.getActualSides(Y);
-            Sides secondBorders = second.getActualSides(Y);
+            Sides sidesOfFirst = first.getActualSides(Y);
+            Sides sidesOfSecond = second.getActualSides(Y);
 
-            List<float> Xal = firstBorders.getLeft();
-            List<float> Xar = firstBorders.getRight();
-            List<float> Xbl = secondBorders.getLeft();
-            List<float> Xbr = secondBorders.getRight();
+            List<float> Xal = sidesOfFirst.getLeft();
+            List<float> Xar = sidesOfFirst.getRight();
+            List<float> Xbl = sidesOfSecond.getLeft();
+            List<float> Xbr = sidesOfSecond.getRight();
 
             // заполнение рабочего списка строки
             List<float[]> M = new List<float[]>();

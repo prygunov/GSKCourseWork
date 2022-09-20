@@ -279,12 +279,12 @@ namespace GSCEditor
             move(origin.X, origin.Y);
         }
 
-        // масштабирование относительно заданной точки
+        // масштабирование по оси X относительно заданной точки
         public void scale(float s, PointF origin)
         {
             move(-origin.X, -origin.Y);
             applyMatrix(new float[,] { { s, 0, 0},
-                                        { 0, s, 0},
+                                        { 0, 1, 0},
                                         { 0, 0, 1} });
             move(origin.X, origin.Y);
         }
