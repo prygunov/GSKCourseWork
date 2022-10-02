@@ -26,7 +26,7 @@ namespace GSCEditor
 
         // обычная отрисовка
         public void render(Graphics g, Pen pen); 
-        // отрисовка с подписью
+        // отрисовка с номером
         public void render(Graphics g, Pen pen, string v) { 
             render(g, pen);
             renderText(g, v);

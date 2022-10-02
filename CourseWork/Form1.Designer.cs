@@ -37,12 +37,12 @@ namespace GSCEditor
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
@@ -76,7 +76,6 @@ namespace GSCEditor
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Location = new System.Drawing.Point(0, 577);
             this.panel1.Name = "panel1";
@@ -89,16 +88,16 @@ namespace GSCEditor
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Location = new System.Drawing.Point(799, 8);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(274, 119);
+            this.groupBox4.Size = new System.Drawing.Size(389, 119);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Преобразования";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(5, 49);
+            this.button1.Location = new System.Drawing.Point(6, 47);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(261, 56);
+            this.button1.Size = new System.Drawing.Size(378, 56);
             this.button1.TabIndex = 4;
             this.button1.Text = "Применить отражение от горизонтальной прямой";
             this.button1.UseVisualStyleBackColor = true;
@@ -107,16 +106,17 @@ namespace GSCEditor
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 23);
+            this.label1.Location = new System.Drawing.Point(15, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 15);
+            this.label1.Size = new System.Drawing.Size(326, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Угол поворота от заданного центра 45°";
+            this.label1.Text = "Угол поворота от заданного центра 45° - при зажатом Alt.";
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.comboBox5);
             this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.comboBox7);
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.comboBox1);
@@ -128,7 +128,6 @@ namespace GSCEditor
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Режим";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // comboBox5
             // 
@@ -154,6 +153,16 @@ namespace GSCEditor
             this.label8.TabIndex = 6;
             this.label8.Text = "Цвет рисования";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(298, 84);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(131, 23);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Очистить поле";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button2_Click);
+            // 
             // comboBox7
             // 
             this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -167,7 +176,6 @@ namespace GSCEditor
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(260, 23);
             this.comboBox7.TabIndex = 8;
-            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
             // 
             // checkBox1
             // 
@@ -204,21 +212,11 @@ namespace GSCEditor
             // 
             this.button4.Location = new System.Drawing.Point(170, 84);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(259, 23);
+            this.button4.Size = new System.Drawing.Size(122, 23);
             this.button4.TabIndex = 5;
             this.button4.Text = "Удалить";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(1079, 17);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(118, 110);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Очистить поле";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox2
             // 
